@@ -20,8 +20,17 @@ import com.empresa.service.ModalidadService;
 public class RegistraModalidadController {
 
 		
+	@ResponseBody
+	@GetMapping(value = "/listaDeporte")
+	public List<Deporte> lista(){
+		return deporteService.listaDeporte();
+	}
+	
 	@Autowired
 	private DeporteService deporteService;
+	
+	
+	
 	
 	@GetMapping(value = "/verRegistraModalidad" )
 	public String verModalidad() {return "registraModalidad";}
@@ -29,12 +38,7 @@ public class RegistraModalidadController {
 	@Autowired
 	private ModalidadService modalidadService;
 	
-	@ResponseBody
-	@GetMapping(value = "/listaDeporte")
-	public List<Deporte> lista(){
-		return deporteService.listaDeporte();
-	}
-	
+
 	@PostMapping("/registraModalidad")
 	@ResponseBody
 	public Map<?, ?> registra(Modalidad obj){
